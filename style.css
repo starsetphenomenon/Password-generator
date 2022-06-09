@@ -1,0 +1,227 @@
+body {
+    margin: 20px 120px;
+    background-color: rgb(40, 30, 51);
+}
+
+.genPass {
+    width: 80vw;
+    min-height: 40vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.genPass__text {
+    margin: 15px;
+    width: 60%;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.genPass__text ::placeholder {
+    opacity: 0.6;
+    color: rgb(26, 120, 26);
+}
+
+.genPass__button {
+    margin: 15px;
+    min-width: 180px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#genPass {
+    padding: 10px 30px;
+    height: 50%;
+    width: 80%;
+    font-size: 32px;
+    border: 3px solid purple;
+    border-radius: 8px;
+}
+
+#genButton {
+    height: 70%;
+    width: 100%;
+    font-size: 28px;
+    text-align: center;
+    text-transform: uppercase;
+    background: rgb(214, 21, 212);
+    background: linear-gradient(90deg, rgba(214, 21, 212, 1) 0%, rgba(111, 27, 93, 1) 48%, rgba(111, 27, 55, 1) 100%, rgba(232, 0, 255, 1) 100%);
+    border: 3px purple solid;
+    border-radius: 8px;
+    cursor: pointer;
+    color: rgb(0, 180, 240);
+}
+
+#genButton:hover {
+    color: rgb(4, 125, 133);
+    background: linear-gradient(90deg, rgb(137, 4, 135) 0%, rgb(88, 1, 69) 48%, rgba(111, 27, 55, 1) 100%, rgb(89, 23, 95) 100%);
+
+}
+
+.genOptions {
+    width: 80vw;
+    min-height: 40vh;
+    margin-left: 10%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.genLength {
+    width: 60%;
+    height: 120px;
+    padding: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.genLength input {
+    padding: 15px;
+    height: 40px;
+    width: 60px;
+    margin: 15px;
+    font-size: 32px;
+    border: 8px solid rgba(128, 0, 128, 0.397);
+    border-radius: 8px;
+}
+
+.genType {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    color: rgb(18, 131, 169);
+    margin-left: 10%;
+    font-size: 32px;
+    font-weight: bolder;
+}
+
+.genType>* {
+    margin-top: 15px;
+}
+
+.chek1,
+.chek2,
+.chek3,
+.chek4 {
+    position: relative;
+}
+
+.genType input {
+    appearance: none;
+    width: 40px;
+    height: 40px;
+    display: block;
+    position: absolute;
+    left: -60px;
+    top: -15%;
+    border: 4px solid rgb(86, 22, 83);
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.genType input:checked {
+    background-color: rgb(36, 154, 201);
+}
+
+input[type=range] {
+    width: 100%;
+    margin: 15.8px 0;
+    background-color: transparent;
+    -webkit-appearance: none;
+}
+
+input[type=range]:focus {
+    outline: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    background: rgba(28, 180, 192, 0.2);
+    border: 0.2px solid rgba(13, 14, 49, 0.9);
+    border-radius: 1.3px;
+    width: 100%;
+    height: 8.4px;
+    cursor: pointer;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    margin-top: -16px;
+    width: 40px;
+    height: 40px;
+    background: rgb(6, 94, 142);
+    border: 1px solid #000000;
+    border-radius: 50px;
+    cursor: pointer;
+    -webkit-appearance: none;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #1cb4c0;
+}
+
+input[type=range]::-moz-range-track {
+    background: rgba(28, 180, 192, 0.2);
+    border: 0.2px solid rgba(13, 14, 49, 0.9);
+    border-radius: 1.3px;
+    width: 100%;
+    height: 8.4px;
+    cursor: pointer;
+}
+
+input[type=range]::-moz-range-thumb {
+    width: 40px;
+    height: 40px;
+    background: #f69c41;
+    border: 1px solid #000000;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+input[type=range]::-ms-track {
+    background: transparent;
+    border-color: transparent;
+    border-width: 17.3px 0;
+    color: transparent;
+    width: 100%;
+    height: 8.4px;
+    cursor: pointer;
+}
+
+input[type=range]::-ms-fill-lower {
+    background: #1cb4c0;
+    border: 0.2px solid rgba(13, 14, 49, 0.9);
+    border-radius: 2.6px;
+}
+
+input[type=range]::-ms-fill-upper {
+    background: rgba(28, 180, 192, 0.2);
+    border: 0.2px solid rgba(13, 14, 49, 0.9);
+    border-radius: 2.6px;
+}
+
+input[type=range]::-ms-thumb {
+    width: 40px;
+    height: 40px;
+    background: #f69c41;
+    border: 1px solid #000000;
+    border-radius: 50px;
+    cursor: pointer;
+    margin-top: 0px;
+}
+
+input[type=range]:focus::-ms-fill-lower {
+    background: rgba(28, 180, 192, 0.2);
+}
+
+input[type=range]:focus::-ms-fill-upper {
+    background: #1cb4c0;
+}

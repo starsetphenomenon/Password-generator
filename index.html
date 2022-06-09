@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password generator</title>
+    <link rel="stylesheet" href="/style.css">
+    <script defer src="/script.js"></script>
+</head>
+
+<body>
+    <form action="#" class="myForm">
+        <div class="genPass">
+            <div class="genPass__text">
+                <input id="genPass" type="text" spellcheck="false" placeholder="Generate password" value="">
+            </div>
+            <div class="genPass__button">
+                <button id="genButton" type="submit">
+                    Generate
+                </button>
+            </div>
+        </div>
+        <div class="genOptions">
+            <div class="genLength">
+                <input id="genLength" type="number" min="1" max="50" value="8">
+                <input id="genRange" type="range" min="1" max="50" value="8">
+            </div>
+            <div class="genType">
+                <div class="chek1">
+                    <input  type="checkbox" id="Upper">
+                    <label for="Upper">Uppercase</label>
+                </div>
+                <div class="chek2">
+                    <input  type="checkbox" id="Lower">
+                    <label for="Lower">Lowercase</label>
+                </div>
+                <div class="chek3">
+                    <input type="checkbox" id="Num">
+                    <label for="Num">Numbers</label>
+                </div>
+                <div class="chek4">
+                    <input type="checkbox" id="Symb">
+                    <label for="Symb">Symbols</label>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+
+</html>
