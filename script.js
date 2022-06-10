@@ -137,8 +137,12 @@ let copyFuncOut = function () {
 };
 
 let copyGenPass = function () {
-    navigator.clipboard.writeText(genPassText.value);
-    genPassText.value = 'SUCCESSFULLY COPIED!';
+    if (genPassText.value.length != 0) {
+        navigator.clipboard.writeText(genPassText.value);
+        genPassText.value = 'SUCCESSFULLY COPIED!';
+    }  else {
+        genPassText.placeholder = 'NOTHING TO COPY!';
+    }
 };
 
 copyText.addEventListener('mouseover', copyFunc);
