@@ -39,7 +39,7 @@ let symbCheck = function () {
         newVal = randomChars.replace('!@#$%^&*()', '');
     }
     randomChars = newVal;
-    genPassText.value = generatePassword(genPassLength.value);
+    //genPassText.value = generatePassword(genPassLength.value);
     passStrength();
     return randomChars;
 };
@@ -52,7 +52,7 @@ let numCheck = function () {
         newVal = randomChars.replace('1234567890', '');
     }
     randomChars = newVal;
-    genPassText.value = generatePassword(genPassLength.value);
+    //genPassText.value = generatePassword(genPassLength.value);
     passStrength();
     return randomChars;
 };
@@ -65,7 +65,7 @@ let upperCheck = function () {
         newVal = randomChars.replace('ABCDEFGHIJKLMNOPQRSTUVWXYZ', '');
     }
     randomChars = newVal;
-    genPassText.value = generatePassword(genPassLength.value);
+    //genPassText.value = generatePassword(genPassLength.value);
     passStrength();
     return randomChars;
 };
@@ -78,7 +78,7 @@ let lowerCheck = function () {
         newVal = randomChars.replace('abcdefghijklmnopqrstuvwxyz', '');
     }
     randomChars = newVal;
-    genPassText.value = generatePassword(genPassLength.value);
+   //genPassText.value = generatePassword(genPassLength.value);
     passStrength();
     return randomChars;
 };
