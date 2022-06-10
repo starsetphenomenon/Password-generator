@@ -1,20 +1,60 @@
 body {
-    margin: 20px 120px;
     background-color: rgb(40, 30, 51);
+}
+
+.copy {
+    width: 30px;
+    height: 40px;
+    position: absolute;
+    right: 10%;
+    top: 30%;
+    border-radius: 4px;
+    background-color: rgb(36, 154, 201);
+    box-shadow: rgb(40, 30, 51) 8px 8px 0;
+    z-index: 5;
+    cursor: pointer;
+}
+
+.copyText {
+    width: 50px;
+    height: 40px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 0%;
+    top: 0%;
+    border-radius: 4px;
+    background-color: rgb(36, 154, 201);
+    z-index: 5;
+    padding: 5px;
+    color: #fff;
+    font-weight: bolder;
+}
+
+.myForm {    
+    width: 90vw;
+    height: 90vh;
+    display: grid;
+    place-items: center;
+    margin: auto;
+    grid-template-columns: minmax(320px, 90vw);
+    grid-template-rows: minmax(120px, 90vh);
 }
 
 .genPass {
     width: 80vw;
     min-height: 40vh;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: minmax(60%, auto) minmax(120px, auto);
+    grid-template-rows: minmax(120px, auto);
     align-items: center;
 }
 
 .genPass__text {
+    position: relative;
     margin: 15px;
-    width: 60%;
+    width: 100%;
     height: 120px;
     display: flex;
     align-items: center;
@@ -36,12 +76,14 @@ body {
 }
 
 #genPass {
+    transition: all 0.6s;
+    position: relative;
     padding: 10px 30px;
     height: 50%;
     width: 80%;
     font-size: 32px;
-    border: 3px solid purple;
-    border-radius: 8px;
+    border: 8px solid purple;
+    border-radius: 16px;
 }
 
 #genButton {
@@ -67,20 +109,19 @@ body {
 .genOptions {
     width: 80vw;
     min-height: 40vh;
-    margin-left: 10%;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: minmax(75%, auto) minmax(25%, auto);
+    grid-template-rows: minmax(120px, auto);
     align-items: center;
 }
 
 .genLength {
     width: 60%;
     height: 120px;
-    padding: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: grid;
+    grid-template-columns: minmax(30%, auto) minmax(60%, auto);
+    margin: auto;
+
 }
 
 .genLength input {
@@ -92,12 +133,15 @@ body {
     border: 8px solid rgba(128, 0, 128, 0.397);
     border-radius: 8px;
 }
+.genType input:hover, .genType label:hover{
+    transform: scale(1.2);
+    transition: all 0.2s;
+}
 
 .genType {
-    width: 40%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: auto;
+    grid-auto-rows: 60px;
     align-items: left;
     color: rgb(18, 131, 169);
     margin-left: 10%;
@@ -109,11 +153,16 @@ body {
     margin-top: 15px;
 }
 
+.genType label {
+    cursor: pointer;
+}
+
 .chek1,
 .chek2,
 .chek3,
 .chek4 {
     position: relative;
+    cursor: pointer;
 }
 
 .genType input {
@@ -134,7 +183,7 @@ body {
 }
 
 input[type=range] {
-    width: 100%;
+    width: 80%;
     margin: 15.8px 0;
     background-color: transparent;
     -webkit-appearance: none;
@@ -224,4 +273,93 @@ input[type=range]:focus::-ms-fill-lower {
 
 input[type=range]:focus::-ms-fill-upper {
     background: #1cb4c0;
+}
+
+
+@media (max-width: 768px) {
+    .copyText {
+        top: -10%;
+        right: -10%;
+    }
+
+    .myForm {
+        grid-template-columns: minmax(95%, auto);
+        grid-template-rows: minmax(320px, auto);
+        grid-auto-rows: minmax(320px, auto);
+        margin: 5px;
+        place-items: center;
+    }
+
+    .genPass {
+        grid-template-columns: minmax(100%, auto);
+        grid-template-rows: auto;
+        grid-auto-rows: auto;
+        place-items: center;
+    }
+
+    .genOptions {
+        display: flex;
+        flex-direction: column;
+        padding-top: 80px;
+        margin-top: 80px;
+    }
+
+    .genLength {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 240px;
+    }
+
+    .genType {
+        display: flex;
+        flex-direction: column;
+        margin: 20px 0;
+    }
+
+    #genPass {
+        font-size: 32px;
+    }
+}
+
+@media (min-width: 769px) {
+    .genPass {
+        grid-template-columns: minmax(60%, auto) minmax(30%, auto);
+        place-items: center center;
+        grid-gap: 60px;
+    }
+
+    .genPass__button {
+        min-width: 230px;
+    }
+
+    .genLength {
+        grid-gap: 60px;
+        place-items: center start;
+        width: 80%;
+    }
+
+    .genOptions {
+        grid-template-columns: minmax(60%, auto) minmax(20%, auto);
+    }
+
+    .genType {
+        margin-left: 120px;
+    }
+
+    #genPass::placeholder {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 576px) {
+    #genPass::placeholder {
+        font-size: 14px;
+    }
+
+    .copyText {
+        top: -10%;
+        right: -10%;
+    }
 }

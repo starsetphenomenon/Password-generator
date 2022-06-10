@@ -9,6 +9,26 @@ let upper = document.getElementById('Upper');
 let symb = document.getElementById('Symb');
 let genButton = document.getElementById('genButton');
 let myForm = document.getElementById('myForm');
+let copyText = document.getElementById('copy');
+let copyTextMsg = document.getElementById('copyText');
+
+//Change border color on how strong is generated password is...
+let passStrength = function () {
+    let passLen = genPassText.value.length;
+    if (passLen <= 1) {
+        genPassText.style.border = '8px solid white';
+    }
+    if (passLen > 1 && passLen <= 4) {
+        genPassText.style.border = '8px solid red';
+    }
+    if (passLen > 4 && passLen <= 8) {
+        genPassText.style.border = '8px solid orange';
+    }
+    if (passLen > 8) {
+        genPassText.style.border = '8px solid green';
+    }
+    return genPassText.style.border;
+};
 
 // changing randomChars by each checkbox function
 let symbCheck = function () {
@@ -20,6 +40,7 @@ let symbCheck = function () {
     }
     randomChars = newVal;
     genPassText.value = generatePassword(genPassLength.value);
+    passStrength();
     return randomChars;
 };
 
@@ -32,6 +53,7 @@ let numCheck = function () {
     }
     randomChars = newVal;
     genPassText.value = generatePassword(genPassLength.value);
+    passStrength();
     return randomChars;
 };
 
@@ -44,6 +66,7 @@ let upperCheck = function () {
     }
     randomChars = newVal;
     genPassText.value = generatePassword(genPassLength.value);
+    passStrength();
     return randomChars;
 };
 
@@ -56,6 +79,7 @@ let lowerCheck = function () {
     }
     randomChars = newVal;
     genPassText.value = generatePassword(genPassLength.value);
+    passStrength();
     return randomChars;
 };
 
@@ -80,11 +104,13 @@ function generatePassword(n) {
 function rangeValue() {
     genPassLength.value = genRange.value;
     genPassText.value = generatePassword(genPassLength.value);
+    passStrength();
 }
 
 function lengthValue() {
     genRange.value = genPassLength.value;
     genPassText.value = generatePassword(genPassLength.value);
+    passStrength();
 }
 
 // tracking range and input values
@@ -97,4 +123,24 @@ genButton.onclick = () => {
         genPassText.placeholder = 'You must to choose the type!';
     }
     genPassText.value = generatePassword(genPassLength.value);
+    passStrength();
 };
+
+
+//Copy the generated password functions + message
+let copyFunc = function () {
+    copyTextMsg.style.display = 'flex';
+};
+
+let copyFuncOut = function () {
+    copyTextMsg.style.display = 'none';
+};
+
+let copyGenPass = function () {
+    navigator.clipboard.writeText(genPassText.value);
+    genPassText.value = 'SUCCESSFULLY COPIED!';
+};
+
+copyText.addEventListener('mouseover', copyFunc);
+copyText.addEventListener('mouseout', copyFuncOut);
+copyText.addEventListener('click', copyGenPass);
