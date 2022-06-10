@@ -118,7 +118,8 @@ genRange.addEventListener("input", rangeValue);
 genPassLength.addEventListener("input", lengthValue);
 
 // generate password on button click and check if it's not empty
-genButton.onclick = () => {
+genButton.onclick = (e) => {
+    e.preventDefault();
     if (!num.checked && !lower.checked && !upper.checked && !symb.checked) {
         genPassText.placeholder = 'You must to choose the type!';
     }
