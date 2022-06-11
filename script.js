@@ -11,24 +11,25 @@ let genButton = document.getElementById('genButton');
 let myForm = document.getElementById('myForm');
 let copyText = document.getElementById('copy');
 let copyTextMsg = document.getElementById('copyText');
+let chekkers = document.querySelectorAll('.chekker');
 
 //Change border color on how strong is generated password is...
 let passStrength = function () {
     let passLen = genPassText.value.length;
     if (passLen <= 1) {
-        genPassText.style.border = '8px solid white';
+        genPassText.style.border = '8px solid grey';
     }
     if (passLen > 1 && passLen <= 4) {
-        genPassText.style.border = '8px solid red';
+        genPassText.style.border = '8px solid firebrick';
     }
     if (passLen > 4 && passLen <= 8) {
-        genPassText.style.border = '8px solid orange';
+        genPassText.style.border = '8px solid coral';
     }
     if (passLen > 8 && passLen <= 12) {
-        genPassText.style.border = '8px solid green';
+        genPassText.style.border = '8px solid darkseagreen';
     }
     if (passLen > 12) {
-        genPassText.style.border = '8px solid Chartreuse';
+        genPassText.style.border = '8px solid green';
     }
     return genPassText.style.border;
 };
@@ -95,47 +96,53 @@ lower.addEventListener("change", lowerCheck);
 // generate randomly chars from strings
 function generatePassword(n) {
     let result = [];
+    let symbArr = '!@#$%^&*()';
+    let numArr = '1234567890';
+    let upperArr = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    let lowerArr = 'abcdefghijklmnopqrstuvwxyz';
+    let numRegEx = /[0-9]/;
+    let symbRegEx = /[!@#$%^&*()]/;
+    let upperRegEx = /[A-Z]/;
+    let lowerRegEx = /[a-z]/;
 
     for (let i = 0; i < n; i++) {
         let random = randomChars.charAt(Math.floor(Math.random() * randomChars.length));
         result.push(random);
     }
 
-    // if symbol type is checked but not includes - add symbol to password
-    while (num.checked && !passContain(result, /[0-9]/)) {
-        let num = '1234567890';
-        let newResult = result.join('');
-        console.log('num: ' + newResult);
-        let newVal = newResult.replace(newResult[Math.floor(Math.random() * newResult.length)], num[Math.floor(Math.random() * num.length)]);
-        console.log(newVal);
-        return newVal;
-    }
+    let newResult = result.join('');
 
-    while (symb.checked && !passContain(result, /[!@#$%^&*()]/)) {
-        let symb = '!@#$%^&*()';
-        let newResult = result.join('');
-        console.log('symb: ' + newResult);
-        let newVal = newResult.replace(newResult[Math.floor(Math.random() * newResult.length)], symb[Math.floor(Math.random() * symb.length)]);
-        console.log(newVal);
-        return newVal;
-    }
+    if (n <= 2) {
+        // if symbol type is checked but not includes - add symbol to password
+        if (num.checked && !passContain(result, numRegEx)) {
+            console.log('num: ' + newResult);
+            let newVal = newResult.replace(newResult[Math.floor(Math.random() * newResult.length)], numArr[Math.floor(Math.random() * numArr.length)]);
+            return newVal;
+        }
 
-    while (upper.checked && !passContain(result, /[A-Z]/)) {
-        let upper = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        let newResult = result.join('');
-        console.log('upper: ' + newResult);
-        let newVal = newResult.replace(newResult[Math.floor(Math.random() * newResult.length)], upper[Math.floor(Math.random() * upper.length)]);
-        console.log(newVal);
-        return newVal;
-    }
+        if (symb.checked && !passContain(result, symbRegEx)) {
+            console.log('symb: ' + newResult);
+            let newVal = newResult.replace(newResult[Math.floor(Math.random() * newResult.length)], symbArr[Math.floor(Math.random() * symbArr.length)]);
+            return newVal;
+        }
 
-    while (lower.checked && !passContain(result, /[a-z]/)) {
-        let lower = 'abcdefghijklmnopqrstuvwxyz';
-        let newResult = result.join('');
-        console.log('lower: ' + newResult);
-        let newVal = newResult.replace(newResult[Math.floor(Math.random() * newResult.length)], lower[Math.floor(Math.random() * lower.length)]);
-        console.log(newVal);
-        return newVal;
+        if (upper.checked && !passContain(result, upperRegEx)) {
+            let newResult = result.join('');
+            console.log('upper: ' + newResult);
+            let newVal = newResult.replace(newResult[Math.floor(Math.random() * newResult.length)], upperArr[Math.floor(Math.random() * upperArr.length)]);
+            return newVal;
+        }
+
+        if (lower.checked && !passContain(result, lowerRegEx)) {
+            let newResult = result.join('');
+            console.log('lower: ' + newResult);
+            let newVal = newResult.replace(newResult[Math.floor(Math.random() * newResult.length)], lowerArr[Math.floor(Math.random() * lowerArr.length)]);
+            return newVal;
+        }
+    }
+    if (n >= 4) {
+        let symbAll = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890!@#$%^&*()';
+
     }
 
     return result.join('');
@@ -172,7 +179,6 @@ function passContain(text, reg) {
     //let regEx = /[0-9]/;
     return reg.test(text);
 }
-
 
 //Copy the generated password functions + message
 let copyFunc = function () {

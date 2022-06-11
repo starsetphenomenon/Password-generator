@@ -10,7 +10,7 @@ body {
     top: 30%;
     border-radius: 4px;
     background-color: rgb(36, 154, 201);
-    box-shadow: rgb(40, 30, 51) 8px 8px 0;
+    box-shadow: rgb(255, 255, 255) 8px 8px 0;
     z-index: 5;
     cursor: pointer;
 }
@@ -61,9 +61,13 @@ body {
     justify-content: center;
 }
 
+.genPass__text input {
+    color: rgb(16, 172, 229);
+}
+
 .genPass__text ::placeholder {
     opacity: 0.8;
-    color: rgb(26, 120, 26);
+    color: rgb(212, 255, 22);
 }
 
 .genPass__button {
@@ -84,6 +88,7 @@ body {
     font-size: 32px;
     border: 8px solid purple;
     border-radius: 16px;
+    background-color: rgb(48, 32, 76);
 }
 
 #genButton {
@@ -115,6 +120,16 @@ body {
     align-items: center;
 }
 
+.genLength input[type=number]::-webkit-inner-spin-button {
+    opacity: 1
+}
+
+.genLength input[type=number] {
+    text-align: left;
+    font-size: 36px;
+    background-color: rgb(4, 125, 133);
+}
+
 .genLength {
     width: 60%;
     height: 120px;
@@ -134,10 +149,13 @@ body {
     border-radius: 8px;
 }
 
-.genType input:hover,
-.genType label:hover {
+.genType input:hover {
     transform: scale(1.2);
     transition: all 0.2s;
+    color: #1cb4c0;
+}
+
+.genType label:hover {
     color: #1cb4c0;
 }
 
