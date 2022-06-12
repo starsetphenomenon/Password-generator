@@ -31,7 +31,7 @@ body {
     padding: 5px 15px 0px;
 }
 
-.reminder{
+.reminder {
     width: 100%;
 }
 
@@ -373,17 +373,19 @@ input[type=range]:focus::-ms-fill-upper {
     #genPass {
         font-size: 32px;
     }
-    .reminder{
+
+    .reminder {
         display: flex;
         justify-content: center;
         margin-bottom: -120px;
     }
-    .genOptions{
+
+    .genOptions {
         margin-top: -60px;
         padding-top: 0;
     }
 
-    #reminder{
+    #reminder {
         position: relative;
         top: -60px;
         height: 60px;
@@ -391,12 +393,13 @@ input[type=range]:focus::-ms-fill-upper {
         left: 3%;
     }
 
-    .myForm{
-        margin-top: 60px;
+    .myForm {
+        position: relative;
+        margin-top: 80px;
         grid-template-rows: minmax(120px, auto);
         grid-row-gap: 0;
     }
-  
+
 }
 
 @media (min-width: 769px) {
@@ -426,22 +429,23 @@ input[type=range]:focus::-ms-fill-upper {
 
     #genPass::placeholder {
         font-size: 22px;
-    }   
+    }
 }
 
 @media (max-width: 576px) {
 
-    .reminder{
+    .reminder {
         display: flex;
         justify-content: center;
         margin-bottom: -120px;
     }
-    .genOptions{
+
+    .genOptions {
         margin-top: -60px;
         padding-top: 0;
     }
 
-    #reminder{
+    #reminder {
         position: relative;
         top: -60px;
         height: 60px;
@@ -449,8 +453,8 @@ input[type=range]:focus::-ms-fill-upper {
         left: 3%;
     }
 
-    .myForm{
-        margin-top: 60px;
+    .myForm {
+        margin-top: 80px;
         grid-template-rows: minmax(120px, auto);
         grid-row-gap: 0;
     }
@@ -462,5 +466,31 @@ input[type=range]:focus::-ms-fill-upper {
     .copyText {
         top: -10%;
         right: -10%;
+    }
+}
+
+@media (min-width:577px) and (max-width: 768px) {
+    #genRange {
+        position: absolute;
+        top: -240px;
+        left: 135px;
+        width: 80px;
+        height: 20px;
+    }
+
+    #genLength {
+        position: absolute;
+        top: -250px;
+        left: 0;
+        width: 50px;
+        height: 40px;
+    }
+
+    #genButton {
+        position: absolute;
+        top: 95px;
+        right: 5%;
+        width: 180px;
+        height: 80px;
     }
 }
