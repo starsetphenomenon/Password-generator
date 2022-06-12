@@ -15,6 +15,31 @@ body {
     cursor: pointer;
 }
 
+#reminder {
+    transition: all 0.6s;
+    position: relative;
+    padding: 10px 30px;
+    height: 50%;
+    width: 85%;
+    font-size: 18px;
+    border: 8px solid purple;
+    border-radius: 16px;
+    background-color: rgb(48, 32, 76);
+    color: rgb(16, 172, 229);
+    left: 5%;
+    top: 0;
+    padding: 5px 15px 0px;
+}
+
+.reminder{
+    width: 100%;
+}
+
+#reminder::placeholder {
+    opacity: 0.8;
+    color: rgb(212, 255, 22);
+}
+
 .copyText {
     width: 50px;
     height: 40px;
@@ -40,6 +65,7 @@ body {
     margin: auto;
     grid-template-columns: minmax(320px, 90vw);
     grid-template-rows: minmax(120px, 90vh);
+    grid-row-gap: 45px;
 }
 
 .genPass {
@@ -112,6 +138,7 @@ body {
 }
 
 .genOptions {
+    position: relative;
     width: 80vw;
     min-height: 40vh;
     display: grid;
@@ -346,6 +373,30 @@ input[type=range]:focus::-ms-fill-upper {
     #genPass {
         font-size: 32px;
     }
+    .reminder{
+        display: flex;
+        justify-content: center;
+        margin-bottom: -120px;
+    }
+    .genOptions{
+        margin-top: -60px;
+        padding-top: 0;
+    }
+
+    #reminder{
+        position: relative;
+        top: -60px;
+        height: 60px;
+        width: 100%;
+        left: 3%;
+    }
+
+    .myForm{
+        margin-top: 60px;
+        grid-template-rows: minmax(120px, auto);
+        grid-row-gap: 0;
+    }
+  
 }
 
 @media (min-width: 769px) {
@@ -375,10 +426,35 @@ input[type=range]:focus::-ms-fill-upper {
 
     #genPass::placeholder {
         font-size: 22px;
-    }
+    }   
 }
 
 @media (max-width: 576px) {
+
+    .reminder{
+        display: flex;
+        justify-content: center;
+        margin-bottom: -120px;
+    }
+    .genOptions{
+        margin-top: -60px;
+        padding-top: 0;
+    }
+
+    #reminder{
+        position: relative;
+        top: -60px;
+        height: 60px;
+        width: 100%;
+        left: 3%;
+    }
+
+    .myForm{
+        margin-top: 60px;
+        grid-template-rows: minmax(120px, auto);
+        grid-row-gap: 0;
+    }
+
     #genPass::placeholder {
         font-size: 14px;
     }

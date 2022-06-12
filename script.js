@@ -12,6 +12,7 @@ let myForm = document.getElementById('myForm');
 let copyText = document.getElementById('copy');
 let copyTextMsg = document.getElementById('copyText');
 let chekkers = document.querySelectorAll('.chekker');
+let passReminder = document.getElementById('reminder');
 
 //Change border color on how strong is generated password is...
 let passStrength = function () {
@@ -37,13 +38,17 @@ let passStrength = function () {
 // changing randomChars by each checkbox function
 let symbCheck = function () {
     let newVal;
-    if (Symb.checked) {
-        newVal = randomChars.concat('!@#$%^&*()');
-    } else {
-        newVal = randomChars.replace('!@#$%^&*()', '');
+    if (symb.checked) {
+        if (upper.checked || lower.checked) {
+            newVal = randomChars.concat('!@#$%^&*()').concat('!@#$%^&*()');
+        } else {
+            newVal = randomChars.concat('!@#$%^&*()');
+        }
+    }
+    if (!symb.checked) {
+        newVal = randomChars.replace(/[!@#$%^&*()]/g, '');
     }
     randomChars = newVal;
-    //genPassText.value = generatePassword(genPassLength.value);
     passStrength();
     return randomChars;
 };
@@ -51,12 +56,16 @@ let symbCheck = function () {
 let numCheck = function () {
     let newVal;
     if (num.checked) {
-        newVal = randomChars.concat('1234567890');
-    } else {
-        newVal = randomChars.replace('1234567890', '');
+        if (upper.checked || lower.checked) {
+            newVal = randomChars.concat('1234567890').concat('1234567890');
+        } else {
+            newVal = randomChars.concat('1234567890');
+        }
+    }
+    if (!num.checked) {
+        newVal = randomChars.replace(/[0-9]/g, '');
     }
     randomChars = newVal;
-    //genPassText.value = generatePassword(genPassLength.value);
     passStrength();
     return randomChars;
 };
@@ -69,7 +78,6 @@ let upperCheck = function () {
         newVal = randomChars.replace('ABCDEFGHIJKLMNOPQRSTUVWXYZ', '');
     }
     randomChars = newVal;
-    //genPassText.value = generatePassword(genPassLength.value);
     passStrength();
     return randomChars;
 };
@@ -82,7 +90,6 @@ let lowerCheck = function () {
         newVal = randomChars.replace('abcdefghijklmnopqrstuvwxyz', '');
     }
     randomChars = newVal;
-    //genPassText.value = generatePassword(genPassLength.value);
     passStrength();
     return randomChars;
 };
@@ -112,39 +119,41 @@ function generatePassword(n) {
 
     let newResult = result.join('');
 
-    if (n <= 2) {
+    if (n >= 4) {
         // if symbol type is checked but not includes - add symbol to password
         if (num.checked && !passContain(result, numRegEx)) {
-            console.log('num: ' + newResult);
             let newVal = newResult.replace(newResult[Math.floor(Math.random() * newResult.length)], numArr[Math.floor(Math.random() * numArr.length)]);
             return newVal;
         }
 
         if (symb.checked && !passContain(result, symbRegEx)) {
-            console.log('symb: ' + newResult);
             let newVal = newResult.replace(newResult[Math.floor(Math.random() * newResult.length)], symbArr[Math.floor(Math.random() * symbArr.length)]);
             return newVal;
         }
 
         if (upper.checked && !passContain(result, upperRegEx)) {
             let newResult = result.join('');
-            console.log('upper: ' + newResult);
             let newVal = newResult.replace(newResult[Math.floor(Math.random() * newResult.length)], upperArr[Math.floor(Math.random() * upperArr.length)]);
             return newVal;
         }
 
         if (lower.checked && !passContain(result, lowerRegEx)) {
             let newResult = result.join('');
-            console.log('lower: ' + newResult);
             let newVal = newResult.replace(newResult[Math.floor(Math.random() * newResult.length)], lowerArr[Math.floor(Math.random() * lowerArr.length)]);
             return newVal;
         }
     }
-    if (n >= 4) {
-        let symbAll = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890!@#$%^&*()';
-
-    }
-
+    /*  if (n >= 4) {
+         if (lower.checked && upper.checked && symb.checked && num.checked) {
+             do {
+                 let newResult = result.join('');
+                 return newResult;
+             } while (!passContain(newResult, lowerRegEx) ||
+                 !passContain(newResult, upperRegEx) ||
+                 !passContain(newResult, symbRegEx) ||
+                 !passContain(newResult, numRegEx));
+         }
+     } */
     return result.join('');
 }
 
@@ -152,12 +161,14 @@ function generatePassword(n) {
 function rangeValue() {
     genPassLength.value = genRange.value;
     genPassText.value = generatePassword(genPassLength.value);
+    reminder(genPassText.value);
     passStrength();
 }
 
 function lengthValue() {
     genRange.value = genPassLength.value;
     genPassText.value = generatePassword(genPassLength.value);
+    reminder(genPassText.value);
     passStrength();
 }
 
@@ -171,7 +182,10 @@ genButton.onclick = (e) => {
     if (!num.checked && !lower.checked && !upper.checked && !symb.checked) {
         return genPassText.placeholder = 'You must to choose the type!';
     }
-    return genPassText.value = generatePassword(genPassLength.value);
+    genPassText.value = generatePassword(genPassLength.value);
+    passStrength();
+    reminder(genPassText.value);
+    return genPassText.value;
 };
 
 // check if passwords contains one of checkbox values...
@@ -201,3 +215,36 @@ let copyGenPass = function () {
 copyText.addEventListener('mouseover', copyFunc);
 copyText.addEventListener('mouseout', copyFuncOut);
 copyText.addEventListener('click', copyGenPass);
+
+// Reminder words for password:
+function reminder(value) {
+    let symbAll = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    let symbAllArr = symbAll.split('');
+    let symbAllWords = ['Alfa', 'Bravo', 'Charlie', 'Delta', 'Echo', 'Foxtrot', 'Golf', 'Hotel',
+        'India', 'Juliett', 'Kilo', 'Lima', 'Mike', 'November', 'Oscar', 'Papa', 'Quebec', 'Romeo',
+        'Sierra', 'Tango', 'Uniform', 'Victor', 'Whiskey', 'Xmas', 'Yankee', 'Zulu', 'ALFA', 'BRAVO',
+        'CHARLIE', 'DELTA', 'ECHO', 'FOXTROT', 'GOLF', 'HOTEL',
+        'INDIA', 'JULIETT', 'KILO', 'LIMA', 'MIKE', 'NOVEMBER', 'OSCAR', 'PAPA', 'QUEBEC', 'ROMEO',
+        'SIERRA', 'TANGO', 'UNIFORM', 'VICTOR', 'WHISKEY', 'XMAS', 'YANKEE', 'ZULU'
+    ];
+    let remindPass = {};
+
+    for (let i = 0; i < symbAllArr.length; i++) {
+        remindPass[symbAllArr[i]] = symbAllWords[i];
+    }
+
+    let remindValue = [];
+
+    for (let i = 0; i < value.length; i++) {
+        if (passContain(value[i],/[a-zA-Z]/g)) {
+            remindValue[i] = remindPass[value[i]];
+        } else {
+            remindValue[i] = value[i];
+        }
+    }
+    console.log(remindValue.join(''));
+
+    passReminder.value = remindValue.join('  ');
+    
+    return passReminder.value;
+}
