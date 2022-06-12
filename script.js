@@ -236,15 +236,14 @@ function reminder(value) {
     let remindValue = [];
 
     for (let i = 0; i < value.length; i++) {
-        if (passContain(value[i],/[a-zA-Z]/g)) {
+        if (passContain(value[i], /[a-zA-Z]/g)) {
             remindValue[i] = remindPass[value[i]];
         } else {
             remindValue[i] = value[i];
         }
     }
-    console.log(remindValue.join(''));
 
     passReminder.value = remindValue.join('  ');
-    
+
     return passReminder.value;
 }
