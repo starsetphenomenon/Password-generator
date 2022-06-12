@@ -6,7 +6,7 @@ body {
     width: 30px;
     height: 40px;
     position: absolute;
-    right: 10%;
+    right: 7%;
     top: 30%;
     border-radius: 4px;
     background-color: rgb(36, 154, 201);
@@ -108,7 +108,7 @@ body {
 #genPass {
     transition: all 0.6s;
     position: relative;
-    padding: 10px 30px;
+    padding: 10px 60px 10px 20px;
     height: 50%;
     width: 80%;
     font-size: 32px;
@@ -466,6 +466,12 @@ input[type=range]:focus::-ms-fill-upper {
     .copyText {
         top: -10%;
         right: -10%;
+    }
+    .copy{
+        right: 8%;
+    }
+    #genPass{
+        padding-right: 70px;
     }
 }
 
