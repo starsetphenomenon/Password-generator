@@ -1,5 +1,4 @@
 let randomChars = "";
-
 let genPassLength = document.getElementById('genLength');
 let genRange = document.getElementById('genRange');
 let genPassText = document.getElementById('genPass');
@@ -177,7 +176,7 @@ genRange.addEventListener("input", rangeValue);
 genPassLength.addEventListener("input", lengthValue);
 
 // generate password on button click and check if it's not empty
-genButton.onclick = (e) => {
+const onGenerateBtn = function (e) {
     e.preventDefault();
     if (!num.checked && !lower.checked && !upper.checked && !symb.checked) {
         return genPassText.placeholder = 'You must to choose the type!';
@@ -187,6 +186,7 @@ genButton.onclick = (e) => {
     reminder(genPassText.value);
     return genPassText.value;
 };
+genButton.addEventListener('click', onGenerateBtn);
 
 // check if passwords contains one of checkbox values...
 function passContain(text, reg) {
