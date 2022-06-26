@@ -21,14 +21,15 @@ body {
     padding: 10px 30px;
     height: 50%;
     width: 85%;
-    font-size: 18px;
-    border: 8px solid purple;
+    font-size: 22px;
+    box-shadow: 2px 2px 4px purple;
+    outline: none;
     border-radius: 16px;
     background-color: rgb(48, 32, 76);
     color: rgb(16, 172, 229);
     left: 5%;
     top: 0;
-    padding: 5px 15px 0px;
+    padding: 10px 15px 5px;
 }
 
 .reminder {
@@ -112,7 +113,7 @@ body {
     height: 50%;
     width: 80%;
     font-size: 32px;
-    border: 8px solid purple;
+    box-shadow: 2px 2px 4px purple;
     border-radius: 16px;
     background-color: rgb(48, 32, 76);
 }
@@ -125,7 +126,7 @@ body {
     text-transform: uppercase;
     background: rgb(214, 21, 212);
     background: linear-gradient(90deg, rgba(214, 21, 212, 1) 0%, rgba(111, 27, 93, 1) 48%, rgba(111, 27, 55, 1) 100%, rgba(232, 0, 255, 1) 100%);
-    border: 3px purple solid;
+    box-shadow: 2px 2px 4px purple;
     border-radius: 8px;
     cursor: pointer;
     color: rgb(0, 180, 240);
@@ -172,7 +173,7 @@ body {
     width: 60px;
     margin: 15px;
     font-size: 32px;
-    border: 8px solid rgba(128, 0, 128, 0.397);
+    box-shadow: 2px 2px 4px rgb(195, 13, 231);
     border-radius: 8px;
 }
 
